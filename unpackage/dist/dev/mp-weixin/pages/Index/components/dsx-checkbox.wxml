@@ -1,0 +1,1 @@
+<view data-event-opts="{{[['tap',[['change',['$event']]]]]}}" class="page" bindtap="__e"><block wx:if="{{!checked}}"><view class="dsx-checkbox"></view></block><block wx:if="{{checked}}"><view class="iconfont icon-check"></view></block></view>

@@ -13,12 +13,19 @@
 						<text class="city-name">{{citydata}}</text>
 					</view>
 					<view class="nav-right" slot="right">
-						<u-search placeholder="搜索你感兴趣的商品" v-model="keyword" :show-action="false" :input-style="inputStyle" search-icon-color="#999" color="#999"></u-search>
+						<u-search placeholder="搜索你感兴趣的商品" v-model="keyword" :show-action="false"
+							:input-style="inputStyle" search-icon-color="#999" color="#999"></u-search>
 					</view>
 				</u-navbar>
 				<!-- 分类 -->
 				<!-- <u-tabs-swiper ref="uTabs" :list="tabsList" :current="tabsCurrent" @change="tabsChange" :is-scroll="false" swiperWidth="750"></u-tabs-swiper> -->
-				<v-tabs v-model="tabsCurrent" :tabs="tabsList" bgColor="#459FFC"></v-tabs>
+				<v-tabs v-model="tabsCurrent" :tabs="tabsList" bgColor="#459FFC" @change="tabsChange"></v-tabs>
+				<!-- 商品列表 -->
+				<swiper style="height: 1000rpx;">
+					<swiper-item  v-for="(item,index) in tabsList" :key="index">
+						<dsx-goods-list :list="goodList" :height="height"></dsx-goods-list>
+					</swiper-item>
+				</swiper>
 			</view>
 		</view>
 	</view>
@@ -26,9 +33,11 @@
 
 <script>
 	import vTabs from './components/v-tabs.vue'
+	import dsxGoodsList from './components/dsx-goods-list.vue'
 	export default {
 		components: {
-			vTabs
+			vTabs,
+			dsxGoodsList
 		},
 		data() {
 			return {
@@ -44,22 +53,64 @@
 				tabsList: [{
 					name: '全部',
 					src: '/static/images/sort.png'
-				},{
+				}, {
 					name: '餐饮类',
 					src: '/static/images/eat.png'
-				},{
+				}, {
 					name: '酒店类',
 					src: '/static/images/hotel.png'
-				},{
+				}, {
 					name: '旅游类',
 					src: '/static/images/trip.png'
-				}]
+				}],
+				goodList: [{
+					title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+					tip: '三亚6日自由行',
+					imgSrc: '/static/images/goodImgDemo.jpg',
+					price: '39.00',
+					originalPrice: '64.90',
+					sellNum: '5600'
+				}, {
+					title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+					tip: '三亚6日自由行',
+					imgSrc: '/static/images/goodImgDemo.jpg',
+					price: '39.00',
+					originalPrice: '64.90',
+					sellNum: '5600'
+				},
+				{
+					title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+					tip: '三亚6日自由行',
+					imgSrc: '/static/images/goodImgDemo.jpg',
+					price: '39.00',
+					originalPrice: '64.90',
+					sellNum: '5600'
+				},
+				{
+					title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+					tip: '三亚6日自由行',
+					imgSrc: '/static/images/goodImgDemo.jpg',
+					price: '39.00',
+					originalPrice: '64.90',
+					sellNum: '5600'
+				},
+				{
+					title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+					tip: '三亚6日自由行',
+					imgSrc: '/static/images/goodImgDemo.jpg',
+					price: '39.00',
+					originalPrice: '64.90',
+					sellNum: '5600'
+				}],
+				height: ''
 			}
 		},
 		onLoad() {
 			this.getLocation()
+			this.getHeight()
 		},
 		methods: {
+			//获取当前地址
 			getLocation() {
 				let that = this
 				uni.getLocation({
@@ -79,21 +130,37 @@
 								// console.log(re)
 								if (re.statusCode === 200) {
 									that.citydata = re.data.regeocode.addressComponent.city
-									that.citydata = that.citydata.slice(0,that.citydata.length-1)
+									that.citydata = that.citydata.slice(0, that.citydata.length - 1)
 								} else {
 									console.log("获取信息失败，请重试！")
 								}
 							}
 						});
-
 					}
 				});
+			},
+			//tabsChange事件
+			tabsChange(e){
+				console.log(e)
+			},
+			//获取自适应高度
+			getHeight(){
+				let that = this
+				uni.getSystemInfo({
+					success:function(res){
+						that.height = res.screenHeight*2-322
+					}
+				})
 			}
 		}
 	}
 </script>
 
 <style lang="scss">
+	page {
+		background-color: #f6f6f6;
+	}
+
 	.box {
 		width: 750rpx;
 		margin: auto;
@@ -103,12 +170,12 @@
 	.home_top {
 		position: relative;
 		width: 100%;
-		height: 300rpx;
+		height: auto;
 	}
-	
+
 	.home_top:after {
 		width: 140%;
-		height: 300rpx;
+		height: 400rpx;
 		position: absolute;
 		left: -20%;
 		top: 0;
@@ -117,32 +184,32 @@
 		border-radius: 0 0 50% 50%;
 		background: #459FFC;
 	}
-	
-	.home_top /deep/ .u-navbar-inner{
+
+	.home_top /deep/ .u-navbar-inner {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
 		padding: 0 20rpx;
 	}
-	
-	.slot-wrap{
+
+	.slot-wrap {
 		display: flex;
 		align-items: center;
 	}
-	
-	.icon-dizhi{
+
+	.icon-dizhi {
 		font-size: 40rpx;
 		color: #FFF;
 	}
-	
-	.city-name{
+
+	.city-name {
 		font-size: 30rpx;
 		font-weight: bold;
 		color: #fff;
 	}
-	
-	.home_top /deep/ .u-status-bar{
+
+	.home_top /deep/ .u-status-bar {
 		display: none;
 	}
 </style>

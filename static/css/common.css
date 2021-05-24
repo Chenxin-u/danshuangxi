@@ -7,7 +7,7 @@
 @font-face {
 	font-family: "iconfont";
 	/* Project id 2566718 */
-	src: url('http://at.alicdn.com/t/font_2566718_ormdy88hazm.ttf') format('truetype');
+	src: url('http://at.alicdn.com/t/font_2566718_6fp5avzm23.ttf') format('truetype');
 }
 
 .iconfont {
@@ -16,6 +16,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-check:before {
+  content: "\e65a";
 }
 
 .icon-dizhi:before {

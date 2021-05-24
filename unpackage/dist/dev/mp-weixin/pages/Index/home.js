@@ -156,7 +156,15 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var vTabs = function vTabs() {__webpack_require__.e(/*! require.ensure | pages/Index/components/v-tabs */ "pages/Index/components/v-tabs").then((function () {return resolve(__webpack_require__(/*! ./components/v-tabs.vue */ 92));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var vTabs = function vTabs() {__webpack_require__.e(/*! require.ensure | pages/Index/components/v-tabs */ "pages/Index/components/v-tabs").then((function () {return resolve(__webpack_require__(/*! ./components/v-tabs.vue */ 92));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var dsxGoodsList = function dsxGoodsList() {__webpack_require__.e(/*! require.ensure | pages/Index/components/dsx-goods-list */ "pages/Index/components/dsx-goods-list").then((function () {return resolve(__webpack_require__(/*! ./components/dsx-goods-list.vue */ 100));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
 
 
 
@@ -186,7 +194,8 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   components: {
-    vTabs: vTabs },
+    vTabs: vTabs,
+    dsxGoodsList: dsxGoodsList },
 
   data: function data() {
     return {
@@ -210,14 +219,56 @@ __webpack_require__.r(__webpack_exports__);
         src: '/static/images/hotel.png' },
       {
         name: '旅游类',
-        src: '/static/images/trip.png' }] };
+        src: '/static/images/trip.png' }],
 
+      goodList: [{
+        title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+        tip: '三亚6日自由行',
+        imgSrc: '/static/images/goodImgDemo.jpg',
+        price: '39.00',
+        originalPrice: '64.90',
+        sellNum: '5600' },
+      {
+        title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+        tip: '三亚6日自由行',
+        imgSrc: '/static/images/goodImgDemo.jpg',
+        price: '39.00',
+        originalPrice: '64.90',
+        sellNum: '5600' },
+
+      {
+        title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+        tip: '三亚6日自由行',
+        imgSrc: '/static/images/goodImgDemo.jpg',
+        price: '39.00',
+        originalPrice: '64.90',
+        sellNum: '5600' },
+
+      {
+        title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+        tip: '三亚6日自由行',
+        imgSrc: '/static/images/goodImgDemo.jpg',
+        price: '39.00',
+        originalPrice: '64.90',
+        sellNum: '5600' },
+
+      {
+        title: '【热门双酒店·2晚+3晚】下单立减300+迎春礼每单5人及以上仙...',
+        tip: '三亚6日自由行',
+        imgSrc: '/static/images/goodImgDemo.jpg',
+        price: '39.00',
+        originalPrice: '64.90',
+        sellNum: '5600' }],
+
+      height: '' };
 
   },
   onLoad: function onLoad() {
     this.getLocation();
+    this.getHeight();
   },
   methods: {
+    //获取当前地址
     getLocation: function getLocation() {
       var that = this;
       uni.getLocation({
@@ -243,7 +294,19 @@ __webpack_require__.r(__webpack_exports__);
               }
             } });
 
+        } });
 
+    },
+    //tabsChange事件
+    tabsChange: function tabsChange(e) {
+      console.log(e);
+    },
+    //获取自适应高度
+    getHeight: function getHeight() {
+      var that = this;
+      uni.getSystemInfo({
+        success: function success(res) {
+          that.height = res.screenHeight * 2 - 322;
         } });
 
     } } };exports.default = _default;

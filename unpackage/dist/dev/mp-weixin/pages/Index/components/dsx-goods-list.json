@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "dsx-checkbox": "/pages/Index/components/dsx-checkbox"
+  },
+  "component": true
+}

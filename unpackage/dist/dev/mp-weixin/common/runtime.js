@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-navbar/u-navbar":1,"node-modules/uview-ui/components/u-search/u-search":1,"pages/Index/components/v-tabs":1,"node-modules/uview-ui/components/u-icon/u-icon":1};
+/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-navbar/u-navbar":1,"node-modules/uview-ui/components/u-search/u-search":1,"pages/Index/components/dsx-goods-list":1,"pages/Index/components/v-tabs":1,"node-modules/uview-ui/components/u-icon/u-icon":1,"pages/Index/components/dsx-checkbox":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-navbar/u-navbar":"node-modules/uview-ui/components/u-navbar/u-navbar","node-modules/uview-ui/components/u-search/u-search":"node-modules/uview-ui/components/u-search/u-search","pages/Index/components/v-tabs":"pages/Index/components/v-tabs","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-navbar/u-navbar":"node-modules/uview-ui/components/u-navbar/u-navbar","node-modules/uview-ui/components/u-search/u-search":"node-modules/uview-ui/components/u-search/u-search","pages/Index/components/dsx-goods-list":"pages/Index/components/dsx-goods-list","pages/Index/components/v-tabs":"pages/Index/components/v-tabs","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon","pages/Index/components/dsx-checkbox":"pages/Index/components/dsx-checkbox"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
