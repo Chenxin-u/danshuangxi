@@ -1,0 +1,23 @@
+/* 公共样式 */
+*{
+	font-family: Helvetica,sans-serif;
+}
+
+/* iconfont */
+@font-face {
+	font-family: "iconfont";
+	/* Project id 2566718 */
+	src: url('http://at.alicdn.com/t/font_2566718_ormdy88hazm.ttf') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-dizhi:before {
+  content: "\e645";
+}
